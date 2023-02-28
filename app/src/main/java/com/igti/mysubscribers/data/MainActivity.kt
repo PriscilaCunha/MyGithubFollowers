@@ -1,7 +1,8 @@
-package com.igti.mysubscribers
+package com.igti.mysubscribers.data
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.igti.mysubscribers.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
