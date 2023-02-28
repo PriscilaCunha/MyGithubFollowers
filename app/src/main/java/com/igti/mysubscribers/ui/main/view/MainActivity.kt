@@ -14,6 +14,7 @@ import com.igti.mysubscribers.R
 import com.igti.mysubscribers.data.api.ApiHelper
 import com.igti.mysubscribers.data.api.ApiServiceImpl
 import com.igti.mysubscribers.data.model.User
+import com.igti.mysubscribers.ui.base.ViewModelFactory
 import com.igti.mysubscribers.ui.main.adapter.MainAdapter
 import com.igti.mysubscribers.ui.main.viewmodel.MainViewModel
 import com.igti.mysubscribers.ui.utils.Status
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     val progressBar = findViewById<ProgressBar>(R.id.progressBar)
                     progressBar.visibility = View.GONE
-                    it.data?let { users -> renderList(users) }
+                    it.data?.let { users -> renderList(users) }
                     val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
                     recyclerView.visibility = View.VISIBLE
                 }
