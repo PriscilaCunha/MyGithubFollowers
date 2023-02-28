@@ -1,5 +1,6 @@
 package com.igti.mysubscribers.ui.main.view
 
+import android.arch.lifecycle.ViewModelProviders
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,10 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.igti.mysubscribers.R
+import com.igti.mysubscribers.data.api.ApiHelper
+import com.igti.mysubscribers.data.api.ApiServiceImpl
+import com.igti.mysubscribers.data.model.User
+import com.igti.mysubscribers.ui.main.adapter.MainAdapter
 import com.igti.mysubscribers.ui.main.viewmodel.MainViewModel
 import com.igti.mysubscribers.ui.utils.Status
 
@@ -65,7 +70,15 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun renderList(users: List<User>) {
+        adapter.addData(users)
+        adapter.notifyDataSetChanged()
+    }
+
     private fun setupViewModel() {
-        TODO("Not yet implemented")
+        mainViewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(ApiHelper(ApiServiceImpl()))
+        ).get(MainViewModel::class.java)
     }
 }
